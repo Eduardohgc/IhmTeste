@@ -34,6 +34,15 @@ namespace AppIHMSimples
             {
                 cbBoxPort.Items.Add(valoresPort[i]);
             }
+            cbBoxPort.Text = "Selecione a porta";//Nome inicial para o comboBox
+
+            //Valores de velocidade no comboBox Baud Rate
+            int[] valoresBaud = { 2400, 4800, 9600, 19200, 57600, 115200 };
+            for (int i = 0; i < valoresBaud.Length; i++)
+            {
+                cbBoxBaud.Items.Add(valoresBaud[i].ToString());
+            }
+            cbBoxBaud.Text = "Selecione a velocidade";
         }
     }
 }
