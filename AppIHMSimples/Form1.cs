@@ -43,6 +43,12 @@ namespace AppIHMSimples
                 cbBoxBaud.Items.Add(valoresBaud[i].ToString());
             }
             cbBoxBaud.Text = "Selecione a velocidade";
+
+            //Valores do tamanho dos dados
+            cbBoxData.Items.Add("7");
+            cbBoxData.Items.Add("8");
+            cbBoxData.Text = "Selecione um valor";
+
         }
     }
 }
