@@ -94,7 +94,6 @@ namespace AppIHMSimples
                     cbBoxStop.Enabled = false;
                     cbBoxParity.Enabled = false;
                     pnlMsg.BackColor = Color.Green;
-                    label1.BackColor = Color.Green;
                     label1.Text = "Close Port";
 
                 }
@@ -111,12 +110,49 @@ namespace AppIHMSimples
                     cbBoxStop.Enabled = true;
                     cbBoxParity.Enabled = true;
                     pnlMsg.BackColor = Color.Red;
-                    label1.BackColor = Color.Red;
                     label1.Text = "Open Port";
                 }
             }
 
             
+        }
+
+        private void btnDes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Fechando a porta
+                serialPort1.Close();
+
+                //Desabilitando os botões caso não exista erro
+                
+                btnCom.Enabled = true;
+                btnDes.Enabled = false;
+                btnFec.Enabled = true;
+                cbBoxPort.Enabled = true;
+                cbBoxBaud.Enabled = true;
+                cbBoxData.Enabled = true;
+                cbBoxStop.Enabled = true;
+                cbBoxParity.Enabled = true;
+                pnlMsg.BackColor = Color.Red;
+                label1.Text = "Open Port";
+
+            }
+            catch
+            {
+                MessageBox.Show("Erro de comunicação com a porta!");
+                //Caso exista erro voltar as configurações anteriores
+                btnCom.Enabled = false;
+                btnDes.Enabled = true;
+                btnFec.Enabled = false;
+                cbBoxPort.Enabled = false;
+                cbBoxBaud.Enabled = false;
+                cbBoxData.Enabled = false;
+                cbBoxStop.Enabled = false;
+                cbBoxParity.Enabled = false;
+                pnlMsg.BackColor = Color.Green;
+                label1.Text = "Close Port";
+            }
         }
     }
 }
