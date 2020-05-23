@@ -42,12 +42,28 @@ namespace AppIHMSimples
             {
                 cbBoxBaud.Items.Add(valoresBaud[i].ToString());
             }
-            cbBoxBaud.Text = "Selecione a velocidade";
+            cbBoxBaud.Text = "9600";
 
             //Valores do tamanho dos dados
             cbBoxData.Items.Add("7");
             cbBoxData.Items.Add("8");
-            cbBoxData.Text = "Selecione um valor";
+            cbBoxData.Text = "8";
+
+            //Valores do Bit Stop
+            cbBoxStop.Items.Add("NONE");
+            cbBoxStop.Items.Add("ONE");
+            cbBoxStop.Items.Add("TWO");
+            cbBoxStop.Text = "NONE";
+
+            //Valores do Parity
+            cbBoxParity.Items.Add("NONE");
+            cbBoxParity.Items.Add("EVEN");
+            cbBoxParity.Items.Add("ODD");
+            cbBoxParity.Items.Add("MARK");
+            cbBoxParity.Items.Add("SPACE");
+            cbBoxParity.Text = "NONE";
+
+
 
         }
     }
