@@ -50,9 +50,15 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtEnviar = new System.Windows.Forms.TextBox();
+            this.btnEnviar = new System.Windows.Forms.Button();
+            this.chbEnviar = new System.Windows.Forms.CheckBox();
             this.pnl1.SuspendLayout();
             this.pnlMsg.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblPort
@@ -190,7 +196,7 @@
             this.pnl1.Controls.Add(this.lblPort);
             this.pnl1.Location = new System.Drawing.Point(12, 12);
             this.pnl1.Name = "pnl1";
-            this.pnl1.Size = new System.Drawing.Size(250, 604);
+            this.pnl1.Size = new System.Drawing.Size(250, 600);
             this.pnl1.TabIndex = 0;
             // 
             // pnlMsg
@@ -198,7 +204,7 @@
             this.pnlMsg.BackColor = System.Drawing.Color.Red;
             this.pnlMsg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlMsg.Controls.Add(this.label1);
-            this.pnlMsg.Location = new System.Drawing.Point(7, 403);
+            this.pnlMsg.Location = new System.Drawing.Point(7, 390);
             this.pnlMsg.Name = "pnlMsg";
             this.pnlMsg.Size = new System.Drawing.Size(239, 191);
             this.pnlMsg.TabIndex = 13;
@@ -222,15 +228,16 @@
             this.tabControl1.Location = new System.Drawing.Point(268, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(602, 604);
+            this.tabControl1.Size = new System.Drawing.Size(500, 600);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(594, 575);
+            this.tabPage1.Size = new System.Drawing.Size(492, 571);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Monitor Serial";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -254,11 +261,55 @@
             this.tabPage3.Text = "Sensores";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.chbEnviar);
+            this.groupBox1.Controls.Add(this.btnEnviar);
+            this.groupBox1.Controls.Add(this.txtEnviar);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(480, 100);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Transmissão";
+            // 
+            // txtEnviar
+            // 
+            this.txtEnviar.Location = new System.Drawing.Point(6, 21);
+            this.txtEnviar.Name = "txtEnviar";
+            this.txtEnviar.Size = new System.Drawing.Size(360, 22);
+            this.txtEnviar.TabIndex = 0;
+            // 
+            // btnEnviar
+            // 
+            this.btnEnviar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEnviar.Location = new System.Drawing.Point(372, 21);
+            this.btnEnviar.Name = "btnEnviar";
+            this.btnEnviar.Size = new System.Drawing.Size(102, 24);
+            this.btnEnviar.TabIndex = 1;
+            this.btnEnviar.Text = "Enviar";
+            this.btnEnviar.UseVisualStyleBackColor = true;
+            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
+            // 
+            // chbEnviar
+            // 
+            this.chbEnviar.AutoSize = true;
+            this.chbEnviar.Location = new System.Drawing.Point(7, 64);
+            this.chbEnviar.Name = "chbEnviar";
+            this.chbEnviar.Size = new System.Drawing.Size(49, 21);
+            this.chbEnviar.TabIndex = 2;
+            this.chbEnviar.Text = "CR";
+            this.chbEnviar.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 631);
+            this.ClientSize = new System.Drawing.Size(782, 623);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.pnl1);
             this.Name = "Form1";
@@ -269,6 +320,9 @@
             this.pnlMsg.ResumeLayout(false);
             this.pnlMsg.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -296,6 +350,10 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox chbEnviar;
+        private System.Windows.Forms.Button btnEnviar;
+        private System.Windows.Forms.TextBox txtEnviar;
     }
 }
 

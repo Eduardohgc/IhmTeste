@@ -154,5 +154,28 @@ namespace AppIHMSimples
                 label1.Text = "Close Port";
             }
         }
+
+        private void btnEnviar_Click(object sender, EventArgs e)
+        {
+            //Verificação se a porta estar aberta, caso não gerar um Mesage Box
+            if (serialPort1.IsOpen)
+            {
+                //Caso o checkBox esteja selecionado enviar com quebra de linha
+                if (chbEnviar.Checked)
+                {
+                    serialPort1.Write(txtEnviar.Text + "\r");
+                }
+                else
+                {
+                    serialPort1.Write(txtEnviar.Text);
+                }
+                txtEnviar.Text = null;
+
+            }
+            else
+            {
+                MessageBox.Show("Erro de comunicação com a porta!");
+            }
+        }
     }
 }
