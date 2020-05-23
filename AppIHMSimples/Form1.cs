@@ -34,7 +34,7 @@ namespace AppIHMSimples
             {
                 cbBoxPort.Items.Add(valoresPort[i]);
             }
-            cbBoxPort.Text = "Selecione a porta";//Nome inicial para o comboBox
+            cbBoxPort.Text = "COM1";//Nome inicial para o comboBox
 
             //Valores de velocidade no comboBox Baud Rate
             int[] valoresBaud = { 2400, 4800, 9600, 19200, 57600, 115200 };
@@ -62,9 +62,61 @@ namespace AppIHMSimples
             cbBoxParity.Items.Add("MARK");
             cbBoxParity.Items.Add("SPACE");
             cbBoxParity.Text = "NONE";
+        }
 
+        private void btnCom_Click(object sender, EventArgs e)
+        {
+            //Verificar se a porta estar aberta, caso esteja fechar lá, caso não abrir com os parâmetros dos comboBox
+            if (serialPort1.IsOpen == true)
+            {
+                serialPort1.Close();
+            }
+            else
+            {
+                //Tratamento de erro caso algum parâmetro esteja errado ou não exista
+                try
+                {
+                    //Abrindo a porta com
+                    serialPort1.PortName = cbBoxPort.Text;
+                    serialPort1.BaudRate = int.Parse(cbBoxBaud.Text);
+                    serialPort1.DataBits = int.Parse(cbBoxData.Text);
+                    serialPort1.StopBits = (StopBits)(cbBoxStop.SelectedIndex);//Casting para tipo StopBits e Selecinar o item do comboBox
+                    serialPort1.Parity = (Parity)(cbBoxParity.SelectedIndex);//O mesmo que foi digitado a cima
+                    serialPort1.Open();
 
+                    //Desabilitando os botões caso não exista erro
+                    btnCom.Enabled = false;
+                    btnDes.Enabled = true;
+                    btnFec.Enabled = false;
+                    cbBoxPort.Enabled = false;
+                    cbBoxBaud.Enabled = false;
+                    cbBoxData.Enabled = false;
+                    cbBoxStop.Enabled = false;
+                    cbBoxParity.Enabled = false;
+                    pnlMsg.BackColor = Color.Green;
+                    label1.BackColor = Color.Green;
+                    label1.Text = "Close Port";
 
+                }
+                catch
+                {
+                    MessageBox.Show("Erro de comunicação com a porta!");
+                    //Caso exista erro voltar as configurações anteriores
+                    btnCom.Enabled = true;
+                    btnDes.Enabled = false;
+                    btnFec.Enabled = true;
+                    cbBoxPort.Enabled = true;
+                    cbBoxBaud.Enabled = true;
+                    cbBoxData.Enabled = true;
+                    cbBoxStop.Enabled = true;
+                    cbBoxParity.Enabled = true;
+                    pnlMsg.BackColor = Color.Red;
+                    label1.BackColor = Color.Red;
+                    label1.Text = "Open Port";
+                }
+            }
+
+            
         }
     }
 }

@@ -148,6 +148,7 @@
             this.btnCom.TabIndex = 10;
             this.btnCom.Text = "Open Port";
             this.btnCom.UseVisualStyleBackColor = true;
+            this.btnCom.Click += new System.EventHandler(this.btnCom_Click);
             // 
             // btnDes
             // 
@@ -206,7 +207,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Red;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(28, 74);
+            this.label1.Location = new System.Drawing.Point(26, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(180, 39);
             this.label1.TabIndex = 0;
