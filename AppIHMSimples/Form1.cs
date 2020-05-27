@@ -77,9 +77,25 @@ namespace AppIHMSimples
                             }
                         }
                         str = null;
+                    }//Texto para a porta analógica
+                    else
+                    {
+                        if (str.Substring(1, 1).Equals("A") && str.Substring(7, 1).Equals("]"))
+                        {
+                            if (str.Substring(2, 1).Equals("1"))
+                            {
+                                lblValorSen1.Text = str.Substring(3, 4);
+                            }
+                            else if (str.Substring(2, 1).Equals("2"))
+                            {
+                                lblValorSen2.Text = str.Substring(3, 4);
+                            }
+
+                            str = null;
+                        }
                     }
-                    
-                }
+
+                }               
             }
         } 
 
