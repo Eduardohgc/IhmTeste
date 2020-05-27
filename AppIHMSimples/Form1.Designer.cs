@@ -47,18 +47,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chbEnviar = new System.Windows.Forms.CheckBox();
+            this.btnEnviar = new System.Windows.Forms.Button();
+            this.txtEnviar = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtEnviar = new System.Windows.Forms.TextBox();
-            this.btnEnviar = new System.Windows.Forms.Button();
-            this.chbEnviar = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnApagar = new System.Windows.Forms.Button();
+            this.txtRecep = new System.Windows.Forms.TextBox();
             this.pnl1.SuspendLayout();
             this.pnlMsg.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblPort
@@ -148,7 +152,7 @@
             // 
             // btnCom
             // 
-            this.btnCom.Location = new System.Drawing.Point(7, 270);
+            this.btnCom.Location = new System.Drawing.Point(7, 255);
             this.btnCom.Name = "btnCom";
             this.btnCom.Size = new System.Drawing.Size(117, 33);
             this.btnCom.TabIndex = 10;
@@ -159,7 +163,7 @@
             // btnDes
             // 
             this.btnDes.Enabled = false;
-            this.btnDes.Location = new System.Drawing.Point(129, 270);
+            this.btnDes.Location = new System.Drawing.Point(129, 255);
             this.btnDes.Name = "btnDes";
             this.btnDes.Size = new System.Drawing.Size(117, 33);
             this.btnDes.TabIndex = 11;
@@ -169,7 +173,7 @@
             // 
             // btnFec
             // 
-            this.btnFec.Location = new System.Drawing.Point(7, 334);
+            this.btnFec.Location = new System.Drawing.Point(7, 309);
             this.btnFec.Name = "btnFec";
             this.btnFec.Size = new System.Drawing.Size(239, 33);
             this.btnFec.TabIndex = 12;
@@ -196,7 +200,7 @@
             this.pnl1.Controls.Add(this.lblPort);
             this.pnl1.Location = new System.Drawing.Point(12, 12);
             this.pnl1.Name = "pnl1";
-            this.pnl1.Size = new System.Drawing.Size(250, 600);
+            this.pnl1.Size = new System.Drawing.Size(250, 562);
             this.pnl1.TabIndex = 0;
             // 
             // pnlMsg
@@ -204,7 +208,7 @@
             this.pnlMsg.BackColor = System.Drawing.Color.Red;
             this.pnlMsg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlMsg.Controls.Add(this.label1);
-            this.pnlMsg.Location = new System.Drawing.Point(7, 390);
+            this.pnlMsg.Location = new System.Drawing.Point(7, 357);
             this.pnlMsg.Name = "pnlMsg";
             this.pnlMsg.Size = new System.Drawing.Size(239, 191);
             this.pnlMsg.TabIndex = 13;
@@ -216,7 +220,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(26, 74);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 39);
+            this.label1.Size = new System.Drawing.Size(175, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "Open Port";
             // 
@@ -228,42 +232,24 @@
             this.tabControl1.Location = new System.Drawing.Point(268, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(500, 600);
+            this.tabControl1.Size = new System.Drawing.Size(500, 562);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(492, 571);
+            this.tabPage1.Size = new System.Drawing.Size(492, 533);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Monitor Serial";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(594, 575);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Botões/Leds";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(594, 575);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Sensores";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox1.Controls.Add(this.chbEnviar);
             this.groupBox1.Controls.Add(this.btnEnviar);
             this.groupBox1.Controls.Add(this.txtEnviar);
@@ -275,26 +261,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Transmissão";
             // 
-            // txtEnviar
-            // 
-            this.txtEnviar.Location = new System.Drawing.Point(6, 21);
-            this.txtEnviar.Name = "txtEnviar";
-            this.txtEnviar.Size = new System.Drawing.Size(360, 22);
-            this.txtEnviar.TabIndex = 0;
-            // 
-            // btnEnviar
-            // 
-            this.btnEnviar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEnviar.Location = new System.Drawing.Point(372, 21);
-            this.btnEnviar.Name = "btnEnviar";
-            this.btnEnviar.Size = new System.Drawing.Size(102, 24);
-            this.btnEnviar.TabIndex = 1;
-            this.btnEnviar.Text = "Enviar";
-            this.btnEnviar.UseVisualStyleBackColor = true;
-            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
-            // 
             // chbEnviar
             // 
             this.chbEnviar.AutoSize = true;
@@ -305,11 +271,80 @@
             this.chbEnviar.Text = "CR";
             this.chbEnviar.UseVisualStyleBackColor = true;
             // 
+            // btnEnviar
+            // 
+            this.btnEnviar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEnviar.Location = new System.Drawing.Point(372, 15);
+            this.btnEnviar.Name = "btnEnviar";
+            this.btnEnviar.Size = new System.Drawing.Size(100, 30);
+            this.btnEnviar.TabIndex = 1;
+            this.btnEnviar.Text = "Enviar";
+            this.btnEnviar.UseVisualStyleBackColor = true;
+            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
+            // 
+            // txtEnviar
+            // 
+            this.txtEnviar.Location = new System.Drawing.Point(6, 21);
+            this.txtEnviar.Name = "txtEnviar";
+            this.txtEnviar.Size = new System.Drawing.Size(360, 22);
+            this.txtEnviar.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(492, 571);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Botões/Leds";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(492, 571);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Sensores";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox2.Controls.Add(this.btnApagar);
+            this.groupBox2.Controls.Add(this.txtRecep);
+            this.groupBox2.Location = new System.Drawing.Point(13, 112);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(467, 411);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Recepção";
+            // 
+            // btnApagar
+            // 
+            this.btnApagar.Location = new System.Drawing.Point(365, 13);
+            this.btnApagar.Name = "btnApagar";
+            this.btnApagar.Size = new System.Drawing.Size(100, 30);
+            this.btnApagar.TabIndex = 2;
+            this.btnApagar.Text = "Apagar";
+            this.btnApagar.UseVisualStyleBackColor = true;
+            this.btnApagar.Click += new System.EventHandler(this.btnApagar_Click);
+            // 
+            // txtRecep
+            // 
+            this.txtRecep.Location = new System.Drawing.Point(6, 49);
+            this.txtRecep.Multiline = true;
+            this.txtRecep.Name = "txtRecep";
+            this.txtRecep.Size = new System.Drawing.Size(455, 356);
+            this.txtRecep.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 623);
+            this.ClientSize = new System.Drawing.Size(782, 582);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.pnl1);
             this.Name = "Form1";
@@ -323,6 +358,8 @@
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -354,6 +391,9 @@
         private System.Windows.Forms.CheckBox chbEnviar;
         private System.Windows.Forms.Button btnEnviar;
         private System.Windows.Forms.TextBox txtEnviar;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnApagar;
+        private System.Windows.Forms.TextBox txtRecep;
     }
 }
 

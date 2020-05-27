@@ -13,10 +13,27 @@ namespace AppIHMSimples
 {
     public partial class Form1 : Form
     {
+        delegate void funcaoRecepcao();
         public Form1()
         {
             InitializeComponent();
+            
+            //Parte da thread com a recpção dos dados
+            serialPort1.DataReceived += SerialPort1_DataReceived;     
         }
+
+        //Thread delega a recepção para a função que ler os dados
+        private void SerialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            funcaoRecepcao recepcaoDelegate = new funcaoRecepcao(RecepcaoSerial);
+            Invoke(recepcaoDelegate);
+        }
+
+        //Função que lê os dados na serial
+        public void RecepcaoSerial()
+        {
+            txtRecep.Text += serialPort1.ReadExisting();
+        } 
 
         private void btnFec_Click(object sender, EventArgs e)
         {
@@ -176,6 +193,13 @@ namespace AppIHMSimples
             {
                 MessageBox.Show("Erro de comunicação com a porta!");
             }
+
+
+        }
+
+        private void btnApagar_Click(object sender, EventArgs e)
+        {
+            txtRecep.Text = null;
         }
     }
 }
