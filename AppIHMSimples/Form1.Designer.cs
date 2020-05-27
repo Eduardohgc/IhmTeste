@@ -57,12 +57,21 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnApagar = new System.Windows.Forms.Button();
             this.txtRecep = new System.Windows.Forms.TextBox();
+            this.btnBotao1 = new System.Windows.Forms.Button();
+            this.pnlLed1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pnlLed2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnBotao2 = new System.Windows.Forms.Button();
             this.pnl1.SuspendLayout();
             this.pnlMsg.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.pnlLed1.SuspendLayout();
+            this.pnlLed2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblPort
@@ -293,10 +302,14 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.pnlLed2);
+            this.tabPage2.Controls.Add(this.btnBotao2);
+            this.tabPage2.Controls.Add(this.pnlLed1);
+            this.tabPage2.Controls.Add(this.btnBotao1);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(492, 571);
+            this.tabPage2.Size = new System.Drawing.Size(492, 533);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Botões/Leds";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -305,7 +318,7 @@
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(492, 571);
+            this.tabPage3.Size = new System.Drawing.Size(492, 533);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Sensores";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -340,6 +353,62 @@
             this.txtRecep.Size = new System.Drawing.Size(455, 356);
             this.txtRecep.TabIndex = 0;
             // 
+            // btnBotao1
+            // 
+            this.btnBotao1.Location = new System.Drawing.Point(22, 11);
+            this.btnBotao1.Name = "btnBotao1";
+            this.btnBotao1.Size = new System.Drawing.Size(100, 50);
+            this.btnBotao1.TabIndex = 0;
+            this.btnBotao1.Text = "Botão 1";
+            this.btnBotao1.UseVisualStyleBackColor = true;
+            this.btnBotao1.Click += new System.EventHandler(this.btnBotao1_Click);
+            // 
+            // pnlLed1
+            // 
+            this.pnlLed1.BackColor = System.Drawing.Color.Maroon;
+            this.pnlLed1.Controls.Add(this.label2);
+            this.pnlLed1.Location = new System.Drawing.Point(22, 75);
+            this.pnlLed1.Name = "pnlLed1";
+            this.pnlLed1.Size = new System.Drawing.Size(100, 50);
+            this.pnlLed1.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(26, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Led 1";
+            // 
+            // pnlLed2
+            // 
+            this.pnlLed2.BackColor = System.Drawing.Color.Maroon;
+            this.pnlLed2.Controls.Add(this.label3);
+            this.pnlLed2.Location = new System.Drawing.Point(161, 75);
+            this.pnlLed2.Name = "pnlLed2";
+            this.pnlLed2.Size = new System.Drawing.Size(100, 50);
+            this.pnlLed2.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(26, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 17);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Led 2";
+            // 
+            // btnBotao2
+            // 
+            this.btnBotao2.Location = new System.Drawing.Point(161, 11);
+            this.btnBotao2.Name = "btnBotao2";
+            this.btnBotao2.Size = new System.Drawing.Size(100, 50);
+            this.btnBotao2.TabIndex = 2;
+            this.btnBotao2.Text = "Botão 2";
+            this.btnBotao2.UseVisualStyleBackColor = true;
+            this.btnBotao2.Click += new System.EventHandler(this.btnBotao2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -358,8 +427,13 @@
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.pnlLed1.ResumeLayout(false);
+            this.pnlLed1.PerformLayout();
+            this.pnlLed2.ResumeLayout(false);
+            this.pnlLed2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -394,6 +468,12 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnApagar;
         private System.Windows.Forms.TextBox txtRecep;
+        private System.Windows.Forms.Panel pnlLed2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnBotao2;
+        private System.Windows.Forms.Panel pnlLed1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnBotao1;
     }
 }
 

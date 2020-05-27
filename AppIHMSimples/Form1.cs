@@ -29,10 +29,58 @@ namespace AppIHMSimples
             Invoke(recepcaoDelegate);
         }
 
+        //Variáveis para ligar e desligar o led
+        String chtxt = null, str = null;
+
         //Função que lê os dados na serial
         public void RecepcaoSerial()
         {
-            txtRecep.Text += serialPort1.ReadExisting();
+            chtxt += serialPort1.ReadExisting();
+            txtRecep.Text += chtxt;
+            str += chtxt;
+            chtxt = null;
+
+            //Texto [LeD1ON] [LeD2OF]
+
+            if (str.Substring(0, 1).Equals("["))
+            {
+                if (str.Length >= 8)
+                {
+                    if (str.Substring(1, 1).Equals("L")
+                        && str.Substring(2, 1).Equals("e")
+                        && str.Substring(3, 1).Equals("D")
+                        && str.Substring(5, 1).Equals("O")
+                        && str.Substring(7, 1).Equals("]"))
+                    {
+                        if (str.Substring(6, 1).Equals("N"))
+                        {
+                            switch (str.Substring(4, 1))
+                            {
+                                case "1":
+                                    pnlLed1.BackColor = Color.Red;
+                                    break;
+                                case "2":
+                                    pnlLed2.BackColor = Color.Red;
+                                    break;
+                            }
+                        }   
+                        else if (str.Substring(6, 1).Equals("F"))
+                        {
+                            switch (str.Substring(4, 1))
+                            {
+                                case "1":
+                                    pnlLed1.BackColor = Color.Maroon;
+                                    break;
+                                case "2":
+                                    pnlLed2.BackColor = Color.Maroon;
+                                    break;
+                            }
+                        }
+                        str = null;
+                    }
+                    
+                }
+            }
         } 
 
         private void btnFec_Click(object sender, EventArgs e)
@@ -195,6 +243,22 @@ namespace AppIHMSimples
             }
 
 
+        }
+
+        private void btnBotao1_Click(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                serialPort1.Write("[Botao1]");
+            }
+        }
+
+        private void btnBotao2_Click(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                serialPort1.Write("[Botao2]");
+            }
         }
 
         private void btnApagar_Click(object sender, EventArgs e)
