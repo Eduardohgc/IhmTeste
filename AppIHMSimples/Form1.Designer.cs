@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblPort = new System.Windows.Forms.Label();
             this.cbBoxPort = new System.Windows.Forms.ComboBox();
             this.lblBaud = new System.Windows.Forms.Label();
@@ -72,6 +76,8 @@
             this.lblPWM = new System.Windows.Forms.Label();
             this.pgbSensor1 = new System.Windows.Forms.ProgressBar();
             this.pgbSensor2 = new System.Windows.Forms.ProgressBar();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.chartSensores = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pnl1.SuspendLayout();
             this.pnlMsg.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -84,6 +90,8 @@
             this.tabPage3.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSensores)).BeginInit();
             this.SuspendLayout();
             // 
             // lblPort
@@ -266,6 +274,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(201, 10);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControl1.Name = "tabControl1";
@@ -556,6 +565,41 @@
             this.pgbSensor2.Size = new System.Drawing.Size(194, 23);
             this.pgbSensor2.TabIndex = 5;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.chartSensores);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(367, 431);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Gráficos";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // chartSensores
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartSensores.ChartAreas.Add(chartArea1);
+            legend1.Alignment = System.Drawing.StringAlignment.Center;
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend1.Name = "Legend1";
+            this.chartSensores.Legends.Add(legend1);
+            this.chartSensores.Location = new System.Drawing.Point(3, 3);
+            this.chartSensores.Name = "chartSensores";
+            this.chartSensores.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Sensor 1";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Sensor 2";
+            this.chartSensores.Series.Add(series1);
+            this.chartSensores.Series.Add(series2);
+            this.chartSensores.Size = new System.Drawing.Size(300, 300);
+            this.chartSensores.TabIndex = 0;
+            this.chartSensores.Text = "chart1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -587,6 +631,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartSensores)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -636,6 +682,8 @@
         private System.Windows.Forms.Label lblPWM;
         private System.Windows.Forms.ProgressBar pgbSensor2;
         private System.Windows.Forms.ProgressBar pgbSensor1;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartSensores;
     }
 }
 

@@ -31,6 +31,7 @@ namespace AppIHMSimples
 
         //Variáveis para ligar e desligar o led
         String chtxt = null, str = null;
+        long tempox;
 
         //Função que lê os dados na serial
         public void RecepcaoSerial()
@@ -86,13 +87,32 @@ namespace AppIHMSimples
                             {
                                 lblValorSen1.Text = str.Substring(3, 4);
                                 pgbSensor1.Value = int.Parse(str.Substring(3, 4));
+
+                                //Código do gráfico do sensor 1
+                                chartSensores.Series[0].Points.AddXY(tempox, int.Parse(str.Substring(3, 4)));
+                                //teste para manter a proporção
+                                if (chartSensores.Series[0].Points.Count > 8)
+                                {
+                                    chartSensores.Series[0].Points.RemoveAt(0);
+                                    chartSensores.Update();
+                                }
+
                             }
                             else if (str.Substring(2, 1).Equals("2"))
                             {
                                 lblValorSen2.Text = str.Substring(3, 4);
                                 pgbSensor2.Value = int.Parse(str.Substring(3, 4));
-                            }
 
+                                //Código do gráfico do sensor 1
+                                chartSensores.Series[0].Points.AddXY(tempox, int.Parse(str.Substring(3, 4)));
+                                //teste para manter a proporção
+                                if (chartSensores.Series[1].Points.Count > 8)
+                                {
+                                    chartSensores.Series[1].Points.RemoveAt(0);
+                                    chartSensores.Update();
+                                }
+                            }
+                            tempox++;
                             str = null;
                         }
                     }
@@ -223,6 +243,7 @@ namespace AppIHMSimples
                 pgbSensor2.Value = 0;
                 lblValorSen1.Text = "0000";
                 lblValorSen2.Text = "0000";
+                chartSensores.Series.Clear();
 
             }
             catch
@@ -239,6 +260,7 @@ namespace AppIHMSimples
                 cbBoxParity.Enabled = false;
                 pnlMsg.BackColor = Color.Green;
                 label1.Text = "Close Port";
+                
             }
         }
 
