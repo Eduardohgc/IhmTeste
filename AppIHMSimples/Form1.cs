@@ -277,6 +277,12 @@ namespace AppIHMSimples
             }
         }
 
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            int valorPWM = trackBar1.Value * 50;
+            serialPort1.Write("[PWM" + valorPWM.ToString() + "]");
+        }
+
         private void btnApagar_Click(object sender, EventArgs e)
         {
             txtRecep.Text = null;
