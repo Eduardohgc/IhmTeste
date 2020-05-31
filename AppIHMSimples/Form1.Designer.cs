@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblPort = new System.Windows.Forms.Label();
             this.cbBoxPort = new System.Windows.Forms.ComboBox();
             this.lblBaud = new System.Windows.Forms.Label();
@@ -72,12 +72,13 @@
             this.lblSensor2 = new System.Windows.Forms.Label();
             this.lblSensor1 = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.tbPWM = new System.Windows.Forms.TrackBar();
             this.lblPWM = new System.Windows.Forms.Label();
             this.pgbSensor1 = new System.Windows.Forms.ProgressBar();
             this.pgbSensor2 = new System.Windows.Forms.ProgressBar();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.chartSensores = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnl1.SuspendLayout();
             this.pnlMsg.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -89,7 +90,7 @@
             this.pnlLed1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPWM)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSensores)).BeginInit();
             this.SuspendLayout();
@@ -112,6 +113,7 @@
             this.cbBoxPort.Name = "cbBoxPort";
             this.cbBoxPort.Size = new System.Drawing.Size(123, 21);
             this.cbBoxPort.TabIndex = 1;
+            this.cbBoxPort.Click += new System.EventHandler(this.cbBoxPort_Click);
             // 
             // lblBaud
             // 
@@ -382,7 +384,7 @@
             // 
             this.tabPage2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabPage2.Controls.Add(this.lblPWM);
-            this.tabPage2.Controls.Add(this.trackBar1);
+            this.tabPage2.Controls.Add(this.tbPWM);
             this.tabPage2.Controls.Add(this.pnlLed2);
             this.tabPage2.Controls.Add(this.btnBotao2);
             this.tabPage2.Controls.Add(this.pnlLed1);
@@ -530,14 +532,14 @@
             this.lblSensor1.TabIndex = 0;
             this.lblSensor1.Text = "Sensor 1:";
             // 
-            // trackBar1
+            // tbPWM
             // 
-            this.trackBar1.Location = new System.Drawing.Point(16, 240);
-            this.trackBar1.Maximum = 5;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(325, 45);
-            this.trackBar1.TabIndex = 4;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.tbPWM.Location = new System.Drawing.Point(16, 240);
+            this.tbPWM.Maximum = 5;
+            this.tbPWM.Name = "tbPWM";
+            this.tbPWM.Size = new System.Drawing.Size(325, 45);
+            this.tbPWM.TabIndex = 4;
+            this.tbPWM.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // lblPWM
             // 
@@ -577,28 +579,32 @@
             // 
             // chartSensores
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartSensores.ChartAreas.Add(chartArea1);
-            legend1.Alignment = System.Drawing.StringAlignment.Center;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend1.Name = "Legend1";
-            this.chartSensores.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            this.chartSensores.ChartAreas.Add(chartArea4);
+            legend4.Alignment = System.Drawing.StringAlignment.Center;
+            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend4.Name = "Legend1";
+            this.chartSensores.Legends.Add(legend4);
             this.chartSensores.Location = new System.Drawing.Point(3, 3);
             this.chartSensores.Name = "chartSensores";
             this.chartSensores.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Sensor 1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Sensor 2";
-            this.chartSensores.Series.Add(series1);
-            this.chartSensores.Series.Add(series2);
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.Legend = "Legend1";
+            series7.Name = "Sensor 1";
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series8.Legend = "Legend1";
+            series8.Name = "Sensor 2";
+            this.chartSensores.Series.Add(series7);
+            this.chartSensores.Series.Add(series8);
             this.chartSensores.Size = new System.Drawing.Size(300, 300);
             this.chartSensores.TabIndex = 0;
             this.chartSensores.Text = "chart1";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -630,7 +636,7 @@
             this.tabPage3.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPWM)).EndInit();
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartSensores)).EndInit();
             this.ResumeLayout(false);
@@ -678,12 +684,13 @@
         private System.Windows.Forms.Label lblSensor2;
         private System.Windows.Forms.Label lblValorSen2;
         private System.Windows.Forms.Label lblValorSen1;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar tbPWM;
         private System.Windows.Forms.Label lblPWM;
         private System.Windows.Forms.ProgressBar pgbSensor2;
         private System.Windows.Forms.ProgressBar pgbSensor1;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSensores;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

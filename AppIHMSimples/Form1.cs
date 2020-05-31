@@ -32,6 +32,7 @@ namespace AppIHMSimples
         //Variáveis para ligar e desligar o led
         String chtxt = null, str = null;
         long tempox;
+        bool flagTime = false;
 
         //Função que lê os dados na serial
         public void RecepcaoSerial()
@@ -41,7 +42,12 @@ namespace AppIHMSimples
             str += chtxt;
             chtxt = null;
 
-            //Texto [LeD1ON] [LeD2OF]
+            if (txtRecep.Text.Length > 776)
+            {
+                txtRecep.Clear();
+            }
+
+            //Protocolo [LeD1ON] [LeD2OF]
 
             if (str.Substring(0, 1).Equals("["))
             {
@@ -114,6 +120,21 @@ namespace AppIHMSimples
                             }
                             tempox++;
                             str = null;
+                        }
+                        else
+                        {
+                            if (str.Substring(0, 1).Equals("[") &&
+                                str.Substring(1, 1).Equals("T") &&
+                                str.Substring(2, 1).Equals("I") &&
+                                str.Substring(3, 1).Equals("M") &&
+                                str.Substring(4, 1).Equals("E") &&
+                                str.Substring(5, 1).Equals("O") &&
+                                str.Substring(6, 1).Equals("K") &&
+                                str.Substring(7, 1).Equals("]"))
+                            {
+                                flagTime = false;
+                                str = null;
+                            }
                         }
                     }
 
@@ -198,6 +219,8 @@ namespace AppIHMSimples
                     cbBoxParity.Enabled = false;
                     pnlMsg.BackColor = Color.Green;
                     label1.Text = "Close Port";
+                    serialPort1.Write("[Start!]");
+                    timer1.Start();
 
                 }
                 catch
@@ -224,6 +247,8 @@ namespace AppIHMSimples
         {
             try
             {
+                serialPort1.Write("[Stop!!]");
+                timer1.Stop();
                 //Fechando a porta
                 serialPort1.Close();
 
@@ -243,7 +268,14 @@ namespace AppIHMSimples
                 pgbSensor2.Value = 0;
                 lblValorSen1.Text = "0000";
                 lblValorSen2.Text = "0000";
-                chartSensores.Series.Clear();
+                chartSensores.Series[0].Points.Clear();
+                chartSensores.Series[1].Points.Clear();
+                pnlLed1.BackColor = Color.Maroon;
+                pnlLed2.BackColor = Color.Maroon;
+                flagTime = false;
+                contTIME = 0;
+                tbPWM.Value = 0;
+                tempox = 0;
 
             }
             catch
@@ -307,8 +339,115 @@ namespace AppIHMSimples
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            int valorPWM = trackBar1.Value * 50;
-            serialPort1.Write("[PWM" + valorPWM.ToString() + "]");
+            if (serialPort1.IsOpen == true)
+            {
+                int valorPWM = tbPWM.Value * 50;
+                if (valorPWM >= 100)
+                {
+                    serialPort1.Write("[PWM" + valorPWM.ToString() + "]");
+                }
+                else
+                {
+                    if (valorPWM >= 50)
+                    {
+                        serialPort1.Write("[PWM0" + valorPWM.ToString() + "]");
+                    }
+                    else
+                    {
+                        serialPort1.Write("[PWM00" + valorPWM.ToString() + "]");
+                    }
+                }
+            }
+            
+            
+        }
+
+        int contTIME = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            contTIME++;
+            if (contTIME >= 40)
+            {
+                if (flagTime == false)
+                {
+                    serialPort1.Write("[TIMEOK]");
+                    contTIME = 0;
+                }
+                else
+                {
+                    try
+                    {
+                        serialPort1.Write("[Stop!!]");
+                        timer1.Stop();
+                        //Fechando a porta
+                        serialPort1.Close();
+
+                        //Desabilitando os botões caso não exista erro
+
+                        btnCom.Enabled = true;
+                        btnDes.Enabled = false;
+                        btnFec.Enabled = true;
+                        cbBoxPort.Enabled = true;
+                        cbBoxBaud.Enabled = true;
+                        cbBoxData.Enabled = true;
+                        cbBoxStop.Enabled = true;
+                        cbBoxParity.Enabled = true;
+                        pnlMsg.BackColor = Color.Red;
+                        label1.Text = "Open Port";
+                        pgbSensor1.Value = 0;
+                        pgbSensor2.Value = 0;
+                        lblValorSen1.Text = "0000";
+                        lblValorSen2.Text = "0000";
+                        chartSensores.Series[0].Points.Clear();
+                        chartSensores.Series[1].Points.Clear();
+                        pnlLed1.BackColor = Color.Maroon;
+                        pnlLed2.BackColor = Color.Maroon;
+                        flagTime = false;
+                        tbPWM.Value = 0;
+                        contTIME = 0;
+                        tempox = 0;
+                        MessageBox.Show("ERRO TIMER");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Erro de comunicação com a porta!");
+                        //Caso exista erro voltar as configurações anteriores
+                        btnCom.Enabled = false;
+                        btnDes.Enabled = true;
+                        btnFec.Enabled = false;
+                        cbBoxPort.Enabled = false;
+                        cbBoxBaud.Enabled = false;
+                        cbBoxData.Enabled = false;
+                        cbBoxStop.Enabled = false;
+                        cbBoxParity.Enabled = false;
+                        pnlMsg.BackColor = Color.Green;
+                        label1.Text = "Close Port";
+                    }
+                    
+                }
+            }
+            else
+            {
+                if (contTIME == 20)
+                {
+                    serialPort1.Write("[TIMEOK]");
+                    flagTime = true;
+                }
+            }
+        }
+
+        private void cbBoxPort_Click(object sender, EventArgs e)
+        {
+            cbBoxPort.Items.Clear();
+
+            //Vetor que recebe todos os nomes das portas
+            String[] valoresPort = SerialPort.GetPortNames();
+
+            //Adicionar os nomes das postar no comboBox COM Port
+            for (int i = 0; i < valoresPort.Length; i++)
+            {
+                cbBoxPort.Items.Add(valoresPort[i]);
+            }
         }
 
         private void btnApagar_Click(object sender, EventArgs e)
