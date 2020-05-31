@@ -69,6 +69,9 @@
             this.lblSensor1 = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.lblPWM = new System.Windows.Forms.Label();
+            this.pgbSensor1 = new System.Windows.Forms.ProgressBar();
+            this.pgbSensor2 = new System.Windows.Forms.ProgressBar();
             this.pnl1.SuspendLayout();
             this.pnlMsg.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -369,6 +372,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage2.Controls.Add(this.lblPWM);
             this.tabPage2.Controls.Add(this.trackBar1);
             this.tabPage2.Controls.Add(this.pnlLed2);
             this.tabPage2.Controls.Add(this.btnBotao2);
@@ -459,15 +463,17 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.pgbSensor2);
+            this.groupBox3.Controls.Add(this.pgbSensor1);
             this.groupBox3.Controls.Add(this.lblValorSen2);
             this.groupBox3.Controls.Add(this.lblValorSen1);
             this.groupBox3.Controls.Add(this.lblSensor2);
             this.groupBox3.Controls.Add(this.lblSensor1);
-            this.groupBox3.Location = new System.Drawing.Point(3, 3);
+            this.groupBox3.Location = new System.Drawing.Point(12, 3);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox3.Size = new System.Drawing.Size(364, 153);
+            this.groupBox3.Size = new System.Drawing.Size(340, 236);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             // 
@@ -475,7 +481,7 @@
             // 
             this.lblValorSen2.AutoSize = true;
             this.lblValorSen2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorSen2.Location = new System.Drawing.Point(130, 98);
+            this.lblValorSen2.Location = new System.Drawing.Point(130, 119);
             this.lblValorSen2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblValorSen2.Name = "lblValorSen2";
             this.lblValorSen2.Size = new System.Drawing.Size(74, 31);
@@ -497,7 +503,7 @@
             // 
             this.lblSensor2.AutoSize = true;
             this.lblSensor2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSensor2.Location = new System.Drawing.Point(4, 98);
+            this.lblSensor2.Location = new System.Drawing.Point(4, 119);
             this.lblSensor2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSensor2.Name = "lblSensor2";
             this.lblSensor2.Size = new System.Drawing.Size(130, 31);
@@ -523,6 +529,32 @@
             this.trackBar1.Size = new System.Drawing.Size(325, 45);
             this.trackBar1.TabIndex = 4;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // lblPWM
+            // 
+            this.lblPWM.AutoSize = true;
+            this.lblPWM.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPWM.Location = new System.Drawing.Point(22, 206);
+            this.lblPWM.Name = "lblPWM";
+            this.lblPWM.Size = new System.Drawing.Size(79, 31);
+            this.lblPWM.TabIndex = 5;
+            this.lblPWM.Text = "PWM";
+            // 
+            // pgbSensor1
+            // 
+            this.pgbSensor1.Location = new System.Drawing.Point(10, 64);
+            this.pgbSensor1.Maximum = 1024;
+            this.pgbSensor1.Name = "pgbSensor1";
+            this.pgbSensor1.Size = new System.Drawing.Size(194, 23);
+            this.pgbSensor1.TabIndex = 4;
+            // 
+            // pgbSensor2
+            // 
+            this.pgbSensor2.Location = new System.Drawing.Point(10, 168);
+            this.pgbSensor2.Maximum = 1024;
+            this.pgbSensor2.Name = "pgbSensor2";
+            this.pgbSensor2.Size = new System.Drawing.Size(194, 23);
+            this.pgbSensor2.TabIndex = 5;
             // 
             // Form1
             // 
@@ -601,6 +633,9 @@
         private System.Windows.Forms.Label lblValorSen2;
         private System.Windows.Forms.Label lblValorSen1;
         private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Label lblPWM;
+        private System.Windows.Forms.ProgressBar pgbSensor2;
+        private System.Windows.Forms.ProgressBar pgbSensor1;
     }
 }
 

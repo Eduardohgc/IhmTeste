@@ -85,10 +85,12 @@ namespace AppIHMSimples
                             if (str.Substring(2, 1).Equals("1"))
                             {
                                 lblValorSen1.Text = str.Substring(3, 4);
+                                pgbSensor1.Value = int.Parse(str.Substring(3, 4));
                             }
                             else if (str.Substring(2, 1).Equals("2"))
                             {
                                 lblValorSen2.Text = str.Substring(3, 4);
+                                pgbSensor2.Value = int.Parse(str.Substring(3, 4));
                             }
 
                             str = null;
@@ -217,6 +219,10 @@ namespace AppIHMSimples
                 cbBoxParity.Enabled = true;
                 pnlMsg.BackColor = Color.Red;
                 label1.Text = "Open Port";
+                pgbSensor1.Value = 0;
+                pgbSensor2.Value = 0;
+                lblValorSen1.Text = "0000";
+                lblValorSen2.Text = "0000";
 
             }
             catch
